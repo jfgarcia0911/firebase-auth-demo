@@ -8,7 +8,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 const SignInPage = () => {
-  const [signInWithEmailAndPassword, user, loading, error] = 
+  const [signInWithEmailAndPassword , user, loading, error] = 
     useSignInWithEmailAndPassword(auth);
   const [darkMode, setDarkMode] = useState(false);
   const [formData, setFormData] = useState({
@@ -98,7 +98,7 @@ const SignInPage = () => {
           console.log("Auth token:", token);
           
           // Redirect to dashboard or home page
-          router.push('/dashboard');
+          router.push('/');
         }
       } catch (error) {
         console.error("Sign in error:", error);
@@ -139,7 +139,7 @@ const SignInPage = () => {
       }
 
       // Redirect to dashboard or home page
-      router.push('/dashboard');
+      router.push('/');
     } catch (error) {
       console.error("Google sign-in error:", error);
       alert(error.message);
@@ -154,7 +154,7 @@ const SignInPage = () => {
         // You can verify the token with your backend here
         console.log("Found existing token:", token);
         // If token exists, redirect to dashboard
-        router.push('/dashboard');
+        router.push('/');
       }
     };
     
@@ -165,7 +165,7 @@ const SignInPage = () => {
   useEffect(() => {
     if (user) {
       console.log("User signed in:", user);
-      router.push('/dashboard');
+      // router.push('/');
     }
 
     if (error) {
@@ -445,7 +445,7 @@ const SignInPage = () => {
             >
               Dont have an account?{" "}
               <a
-                href="/signup"
+                href="/sign-up"
                 className="font-medium text-blue-500 hover:text-blue-400 transition-colors duration-300"
               >
                 Sign up

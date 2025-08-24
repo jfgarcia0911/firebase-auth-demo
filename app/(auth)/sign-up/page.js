@@ -5,9 +5,10 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, googleProvider, db } from "../../firebase/config";
 import { signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+
 const SignupPage = () => {
-	const [createUserWithEmailAndPassword, user, error] =
-		useCreateUserWithEmailAndPassword(auth);
+	const [createUserWithEmailAndPassword, user, error] = useCreateUserWithEmailAndPassword(auth);
 	const [darkMode, setDarkMode] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
@@ -15,6 +16,7 @@ const SignupPage = () => {
 		password: "",
 		confirmPassword: "",
 	});
+	const router = useRouter()
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const [errors, setErrors] = useState({});
@@ -108,28 +110,29 @@ const SignupPage = () => {
 
     //Used for Google sign in
 	const handleGoogleSignIn = async () => {
-    try {
-      // Sign in with Google
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
+		router.push('/sign-in')
+    // try {
+    //   // Sign in with Google
+    //   const result = await signInWithPopup(auth, googleProvider);
+    //   const user = result.user;
 
-      console.log("Google user:", user);
+    //   console.log("Google user:", user);
 
-      // Save user to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        name: user.displayName,
-        email: user.email,
-        photoURL: user.photoURL,
-        provider: "google",
-        createdAt: new Date(),
-      });
+    //   // Save user to Firestore
+    //   await setDoc(doc(db, "users", user.uid), {
+    //     uid: user.uid,
+    //     name: user.displayName,
+    //     email: user.email,
+    //     photoURL: user.photoURL,
+    //     provider: "google",
+    //     createdAt: new Date(),
+    //   });
 
-      alert(`Welcome ${user.displayName}! Your account is saved.`);
-    } catch (error) {
-      console.error("Google sign-in error:", error);
-      alert(error.message);
-    }
+    //   alert(`Welcome ${user.displayName}! Your account is saved.`);
+    // } catch (error) {
+    //   console.error("Google sign-in error:", error);
+    //   alert(error.message);
+    // }
   };
 
 	// React will re-render when `user` or `error` changes
