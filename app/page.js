@@ -11,7 +11,6 @@ export default function Home() {
 	const [user] = useAuthState(auth);
 	const router = useRouter();
 	const [isSigningOut, setIsSigningOut] = useState(false);
-	const token = localStorage.getItem("authToken");
 
 	const handleSignOut = async () => {
 		setIsSigningOut(true);
@@ -35,11 +34,11 @@ export default function Home() {
 					Welcome to Firebase Auth Demo
 				</h1>
 
-				<div className="bg-gray-50 p-4 rounded-lg mb-6">
+				<div className="bg-gray-50 p-4 rounded-lg mb-6 relative">
 					<h2 className="text-xl font-semibold mb-3">
 						User Information
 					</h2>
-					<UserAvatar user={user} className={'absolute top-15 right-5'}/>
+					<UserAvatar user={user} className={'absolute top-0 right-5'}/>
 					<p className="text-lg mb-2">
 						<strong>Name:</strong>{" "}
 						{user?.displayName || "Not provided"}

@@ -52,8 +52,10 @@ const UserAvatar = ({ user, size = "md", className = "" }) => {
 		return (
 			<Image
 				src={user.photoURL}
+                width={96}
+                height={96}
 				alt="Profile"
-				className={`rounded-full ${sizeClasses[size]} ${className}`}
+				className={`rounded-full object-cover ${sizeClasses[size]} ${className}`}
 				onError={() => setImageError(true)}
 			/>
 		);
