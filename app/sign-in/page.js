@@ -159,7 +159,7 @@ const SignInPage = () => {
     };
     
     verifyToken();
-  }, []);
+  }, [router]);
 
   // Handle auth state changes
   useEffect(() => {
