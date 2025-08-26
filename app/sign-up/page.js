@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Eye, EyeOff, Moon, Sun, ArrowBigDownDash } from "lucide-react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth, googleProvider, db } from "../../firebase/config";
+import { auth, googleProvider, db } from "../firebase/config";
 import { signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
