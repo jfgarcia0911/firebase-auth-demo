@@ -5,6 +5,7 @@ import { auth } from "./lib/firebase";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
+import UserAvatar from './components/UserAvatar'
 
 export default function Home() {
 	const [user] = useAuthState(auth);
@@ -38,15 +39,7 @@ export default function Home() {
 					<h2 className="text-xl font-semibold mb-3">
 						User Information
 					</h2>
-					{user?.photoURL && (
-						<div className="flex justify-center mb-4">
-							<img
-								src={user.photoURL || "/window.svg"}
-								alt="Profile"
-								className="w-24 h-24 rounded-full"
-							/>
-						</div>
-					)}
+					<UserAvatar user={user} className={'absolute top-15 right-5'}/>
 					<p className="text-lg mb-2">
 						<strong>Name:</strong>{" "}
 						{user?.displayName || "Not provided"}

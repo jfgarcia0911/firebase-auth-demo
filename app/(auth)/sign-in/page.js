@@ -129,7 +129,7 @@ const SignInPage = () => {
       if (!userDoc.exists()) {
         await setDoc(doc(db, "users", user.uid), {
           uid: user.uid,
-          name: user.displayName,
+          displayName: user.displayName,
           email: user.email,
           photoURL: user.photoURL,
           provider: "google",

@@ -24,7 +24,6 @@ const SignupPage = () => {
 
 	const toggleDarkMode = () => {
 		setDarkMode(!darkMode);
-		// document.documentElement.classList.toggle('dark');
 	};
 
 	const handleChange = (e) => {
@@ -111,28 +110,7 @@ const SignupPage = () => {
     //Used for Google sign in
 	const handleGoogleSignIn = async () => {
 		router.push('/sign-in')
-    // try {
-    //   // Sign in with Google
-    //   const result = await signInWithPopup(auth, googleProvider);
-    //   const user = result.user;
-
-    //   console.log("Google user:", user);
-
-    //   // Save user to Firestore
-    //   await setDoc(doc(db, "users", user.uid), {
-    //     uid: user.uid,
-    //     name: user.displayName,
-    //     email: user.email,
-    //     photoURL: user.photoURL,
-    //     provider: "google",
-    //     createdAt: new Date(),
-    //   });
-
-    //   alert(`Welcome ${user.displayName}! Your account is saved.`);
-    // } catch (error) {
-    //   console.error("Google sign-in error:", error);
-    //   alert(error.message);
-    // }
+    
   };
 
 	// React will re-render when `user` or `error` changes
@@ -465,6 +443,9 @@ const SignupPage = () => {
 							className={`text-sm ${
 								darkMode ? "text-gray-400" : "text-gray-600"
 							}`}
+
+
+
 						>
 							Already have an account?{" "}
 							<a
